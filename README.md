@@ -16,6 +16,9 @@ dotnet run --project test/test.csproj
  - `Veintiuna.cs`: Código principal del juego.
  - `veintiuna.csproj`: Archivo de configuración del proyecto.
 
+
+(capturaJuego.png)
+
 ## Cómo jugar
 
 Al iniciar el programa, verás un menú:
