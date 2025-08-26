@@ -1,4 +1,4 @@
-# test
+# Juego de 21
 
 Este proyecto es un juego de cartas simple en consola hecho en C# para .NET 9.0.
 
