@@ -1,16 +1,9 @@
-<<<<<<< Updated upstream
-﻿using System;
-=======
 ﻿
 using System;
 using Humanizer;
 using Colorful;
 using System.Drawing;
 using Spectre.Console;
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
 class Veintiuna
 {
@@ -52,23 +45,12 @@ class Veintiuna
         int indice = Random.Shared.Next(0, 13);
         int valor = ObtenerValorCarta(indice);
         sumaCartas += valor;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        Console.WriteLine($"Carta inicial: {nombresCartas[indice]} (valor: {valor})");
-=======
-=======
->>>>>>> Stashed changes
-    System.Drawing.Color cartaColor = System.Drawing.Color.Blue;
-    Spectre.Console.AnsiConsole.Write(
-        new Spectre.Console.Panel($"Carta inicial: {nombresCartas[indice]} (valor: {valor} - {valor.ToWords()})")
-            .Border(Spectre.Console.BoxBorder.Rounded)
-            .BorderColor(Spectre.Console.Color.Blue)
-            .Padding(1,1)
-    );
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+        Spectre.Console.AnsiConsole.Write(
+            new Spectre.Console.Panel($"Carta inicial: {nombresCartas[indice]} (valor: {valor} - {valor.ToWords()})")
+                .Border(Spectre.Console.BoxBorder.Rounded)
+                .BorderColor(Spectre.Console.Color.Blue)
+                .Padding(1,1)
+        );
 
         while (sumaCartas < 21)
         {
@@ -85,14 +67,6 @@ class Veintiuna
             indice = Random.Shared.Next(0, 13);
             valor = ObtenerValorCarta(indice);
             sumaCartas += valor;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            Console.WriteLine($"Has sacado {nombresCartas[indice]} (valor: {valor}). Suma de cartas: {sumaCartas}");
-
-            if (sumaCartas == 21)
-            {
-                Console.WriteLine("¡Has ganado!");
-=======
             Spectre.Console.AnsiConsole.Write(
                 new Spectre.Console.Panel($"Has sacado {nombresCartas[indice]} (valor: {valor} - {valor.ToWords()})\nSuma de cartas: {sumaCartas} ({sumaCartas.ToWords()})")
                     .Border(Spectre.Console.BoxBorder.Rounded)
@@ -102,17 +76,6 @@ class Veintiuna
 
             if (sumaCartas == 21)
             {
-=======
-            Spectre.Console.AnsiConsole.Write(
-                new Spectre.Console.Panel($"Has sacado {nombresCartas[indice]} (valor: {valor} - {valor.ToWords()})\nSuma de cartas: {sumaCartas} ({sumaCartas.ToWords()})")
-                    .Border(Spectre.Console.BoxBorder.Rounded)
-                    .BorderColor(Spectre.Console.Color.Yellow)
-                    .Padding(1,1)
-            );
-
-            if (sumaCartas == 21)
-            {
->>>>>>> Stashed changes
                 Spectre.Console.AnsiConsole.Write(
                     new Spectre.Console.Panel($"¡Has ganado con {sumaCartas} ({sumaCartas.ToWords()}) puntos!")
                         .Header("[bold green]¡Victoria![/]")
@@ -120,20 +83,10 @@ class Veintiuna
                         .Padding(1,1)
                         .BorderColor(Spectre.Console.Color.Green)
                 );
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
                 break;
             }
             else if (sumaCartas > 21)
             {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                Console.WriteLine("¡Te has pasado! Has perdido.");
-=======
-=======
->>>>>>> Stashed changes
                 Spectre.Console.AnsiConsole.Write(
                     new Spectre.Console.Panel($"¡Te has pasado! Has perdido con {sumaCartas} ({sumaCartas.ToWords()}) puntos.")
                         .Header("[bold red]Derrota[/]")
@@ -141,10 +94,6 @@ class Veintiuna
                         .Padding(1,1)
                         .BorderColor(Spectre.Console.Color.Red)
                 );
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
                 break;
             }
         }
