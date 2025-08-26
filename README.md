@@ -17,7 +17,7 @@ dotnet run --project test/test.csproj
  - `veintiuna.csproj`: Archivo de configuración del proyecto.
 
 
-(capturaJuego.png)
+![Captura del juego](capturaJuego.png)
 
 ## Cómo jugar
 
