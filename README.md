@@ -13,9 +13,20 @@ dotnet run --project test/test.csproj
 
 ## Estructura
 
-- `Program.cs`: Código principal del juego.
-- `test.csproj`: Archivo de configuración del proyecto.
+ - `Veintiuna.cs`: Código principal del juego.
+ - `veintiuna.csproj`: Archivo de configuración del proyecto.
 
-## Juego
+## Cómo jugar
 
-El juego consiste en pedir cartas hasta sumar 21 puntos sin pasarse. Si llegas a 21, ganas; si te pasas, pierdes.
+Al iniciar el programa, verás un menú:
+
+1. Iniciar juego
+2. Salir
+
+Si eliges "Iniciar juego":
+- Recibes una carta inicial (valor entre 1 y 10).
+- Puedes pedir más cartas presionando Enter, o detenerte con cualquier otra tecla.
+- El objetivo es sumar 21 puntos sin pasarte.
+- Si llegas a 21, ganas. Si te pasas, pierdes.
+
+Al finalizar una partida, puedes elegir si deseas continuar jugando o salir.

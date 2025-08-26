@@ -1,6 +1,6 @@
 ﻿using System;
 
-class Program
+class Veintiuna
 {
     static void Main()
     {
