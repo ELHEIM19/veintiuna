@@ -43,9 +43,12 @@ class Veintiuna
     static void Jugar()
     {
         int sumaCartas = 0;
-        int carta = Random.Shared.Next(1, 11);
-        sumaCartas += carta;
-        Console.WriteLine($"Carta inicial: {carta}");
+        string[] nombresCartas = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
+
+        int indice = Random.Shared.Next(0, 13);
+        int valor = ObtenerValorCarta(indice);
+        sumaCartas += valor;
+        Console.WriteLine($"Carta inicial: {nombresCartas[indice]} (valor: {valor})");
 
         while (sumaCartas < 21)
         {
@@ -55,9 +58,10 @@ class Veintiuna
             if (key.Key != ConsoleKey.Enter)
                 break;
 
-            carta = Random.Shared.Next(1, 11);
-            sumaCartas += carta;
-            Console.WriteLine($"Has sacado {carta}. Suma de cartas: {sumaCartas}");
+            indice = Random.Shared.Next(0, 13);
+            valor = ObtenerValorCarta(indice);
+            sumaCartas += valor;
+            Console.WriteLine($"Has sacado {nombresCartas[indice]} (valor: {valor}). Suma de cartas: {sumaCartas}");
 
             if (sumaCartas == 21)
             {
@@ -69,6 +73,26 @@ class Veintiuna
                 Console.WriteLine("¡Te has pasado! Has perdido.");
                 break;
             }
+        }
+    }
+
+    static int ObtenerValorCarta(int indice)
+    {
+        // A = 0, 2-10 = 1-9, J/Q/K = 10-12
+        if (indice == 0)
+        {
+            Console.Write("Has sacado un As. ¿Qué valor quieres darle? (1/11): ");
+            string? input = Console.ReadLine();
+            if (input != null && input.Trim() == "11") return 11;
+            return 1;
+        }
+        else if (indice >= 10) // J, Q, K
+        {
+            return 10;
+        }
+        else // 2-10
+        {
+            return indice + 1;
         }
     }
 }
