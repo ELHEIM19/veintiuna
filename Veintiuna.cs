@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using System;
+using Humanizer;
 
 class Veintiuna
 {
@@ -48,7 +50,7 @@ class Veintiuna
         int indice = Random.Shared.Next(0, 13);
         int valor = ObtenerValorCarta(indice);
         sumaCartas += valor;
-        Console.WriteLine($"Carta inicial: {nombresCartas[indice]} (valor: {valor})");
+    Console.WriteLine($"Carta inicial: {nombresCartas[indice]} (valor: {valor} - {valor.ToWords()})");
 
         while (sumaCartas < 21)
         {
@@ -61,16 +63,16 @@ class Veintiuna
             indice = Random.Shared.Next(0, 13);
             valor = ObtenerValorCarta(indice);
             sumaCartas += valor;
-            Console.WriteLine($"Has sacado {nombresCartas[indice]} (valor: {valor}). Suma de cartas: {sumaCartas}");
+            Console.WriteLine($"Has sacado {nombresCartas[indice]} (valor: {valor} - {valor.ToWords()}). Suma de cartas: {sumaCartas} ({sumaCartas.ToWords()})");
 
             if (sumaCartas == 21)
             {
-                Console.WriteLine("¡Has ganado!");
+                Console.WriteLine($"¡Has ganado con {sumaCartas} ({sumaCartas.ToWords()}) puntos!");
                 break;
             }
             else if (sumaCartas > 21)
             {
-                Console.WriteLine("¡Te has pasado! Has perdido.");
+                Console.WriteLine($"¡Te has pasado! Has perdido con {sumaCartas} ({sumaCartas.ToWords()}) puntos.");
                 break;
             }
         }
