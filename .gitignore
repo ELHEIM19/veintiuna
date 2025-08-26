@@ -1,0 +1,10 @@
+# Archivos y carpetas generados por .NET y Visual Studio
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.vs/
+.vscode/
+*.DS_Store
