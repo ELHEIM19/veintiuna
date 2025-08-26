@@ -8,4 +8,13 @@
     <StartupObject>Veintiuna</StartupObject>
   </PropertyGroup>
 
+<<<<<<< Updated upstream
+=======
+  <ItemGroup>
+    <PackageReference Include="Colorful.Console" Version="1.2.15" />
+    <PackageReference Include="Humanizer" Version="2.14.1" />
+    <PackageReference Include="Spectre.Console" Version="0.50.0" />
+  </ItemGroup>
+
+>>>>>>> Stashed changes
 </Project>

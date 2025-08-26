@@ -1,41 +1,42 @@
+<<<<<<< Updated upstream
 ﻿using System;
+=======
+﻿
+using System;
+using Humanizer;
+using Colorful;
+using System.Drawing;
+using Spectre.Console;
+>>>>>>> Stashed changes
 
 class Veintiuna
 {
     static void Main()
     {
-        int menuOption;
         char userInput = ' ';
 
         do
         {
-            Console.WriteLine("Menú:");
-            Console.WriteLine("1. Iniciar juego");
-            Console.WriteLine("2. Salir");
-            Console.Write("Seleccione una opción: ");
+            var option = Spectre.Console.AnsiConsole.Prompt(
+                new Spectre.Console.SelectionPrompt<string>()
+                    .Title("[bold yellow]Veintiuna[/] - Elige una opción:")
+                    .PageSize(3)
+                    .AddChoices(new[] { "Iniciar juego", "Salir" })
+            );
 
-            if (!int.TryParse(Console.ReadLine(), out menuOption))
+            if (option == "Iniciar juego")
             {
-                Console.WriteLine("Opción inválida.");
-                continue;
+                Jugar();
+            }
+            else if (option == "Salir")
+            {
+                Spectre.Console.AnsiConsole.MarkupLine("[blue]Saliendo...[/]");
+                return;
             }
 
-            switch (menuOption)
-            {
-                case 1:
-                    Jugar();
-                    break;
-                case 2:
-                    Console.WriteLine("Saliendo...");
-                    return;
-                default:
-                    Console.WriteLine("Opción inválida.");
-                    break;
-            }
-
-            Console.Write("¿Desea continuar? (s/n): ");
-            userInput = Console.ReadKey().KeyChar;
-            Console.WriteLine();
+            Spectre.Console.AnsiConsole.MarkupLine("¿Desea continuar? ([green]s[/]/[red]n[/]): ");
+            userInput = System.Console.ReadKey().KeyChar;
+            System.Console.WriteLine();
 
         } while (char.ToLower(userInput) != 'n');
     }
@@ -48,29 +49,72 @@ class Veintiuna
         int indice = Random.Shared.Next(0, 13);
         int valor = ObtenerValorCarta(indice);
         sumaCartas += valor;
+<<<<<<< Updated upstream
         Console.WriteLine($"Carta inicial: {nombresCartas[indice]} (valor: {valor})");
+=======
+    System.Drawing.Color cartaColor = System.Drawing.Color.Blue;
+    Spectre.Console.AnsiConsole.Write(
+        new Spectre.Console.Panel($"Carta inicial: {nombresCartas[indice]} (valor: {valor} - {valor.ToWords()})")
+            .Border(Spectre.Console.BoxBorder.Rounded)
+            .BorderColor(Spectre.Console.Color.Blue)
+            .Padding(1,1)
+    );
+>>>>>>> Stashed changes
 
         while (sumaCartas < 21)
         {
-            Console.WriteLine("Presiona Enter para pedir otra carta o cualquier otra tecla para detenerte...");
-            var key = Console.ReadKey(true);
+            var action = Spectre.Console.AnsiConsole.Prompt(
+                new Spectre.Console.SelectionPrompt<string>()
+                    .Title("¿Qué deseas hacer?")
+                    .PageSize(3)
+                    .AddChoices(new[] { "Pedir carta", "Detenerse" })
+            );
 
-            if (key.Key != ConsoleKey.Enter)
+            if (action == "Detenerse")
                 break;
 
             indice = Random.Shared.Next(0, 13);
             valor = ObtenerValorCarta(indice);
             sumaCartas += valor;
+<<<<<<< Updated upstream
             Console.WriteLine($"Has sacado {nombresCartas[indice]} (valor: {valor}). Suma de cartas: {sumaCartas}");
 
             if (sumaCartas == 21)
             {
                 Console.WriteLine("¡Has ganado!");
+=======
+            Spectre.Console.AnsiConsole.Write(
+                new Spectre.Console.Panel($"Has sacado {nombresCartas[indice]} (valor: {valor} - {valor.ToWords()})\nSuma de cartas: {sumaCartas} ({sumaCartas.ToWords()})")
+                    .Border(Spectre.Console.BoxBorder.Rounded)
+                    .BorderColor(Spectre.Console.Color.Yellow)
+                    .Padding(1,1)
+            );
+
+            if (sumaCartas == 21)
+            {
+                Spectre.Console.AnsiConsole.Write(
+                    new Spectre.Console.Panel($"¡Has ganado con {sumaCartas} ({sumaCartas.ToWords()}) puntos!")
+                        .Header("[bold green]¡Victoria![/]")
+                        .Border(Spectre.Console.BoxBorder.Rounded)
+                        .Padding(1,1)
+                        .BorderColor(Spectre.Console.Color.Green)
+                );
+>>>>>>> Stashed changes
                 break;
             }
             else if (sumaCartas > 21)
             {
+<<<<<<< Updated upstream
                 Console.WriteLine("¡Te has pasado! Has perdido.");
+=======
+                Spectre.Console.AnsiConsole.Write(
+                    new Spectre.Console.Panel($"¡Te has pasado! Has perdido con {sumaCartas} ({sumaCartas.ToWords()}) puntos.")
+                        .Header("[bold red]Derrota[/]")
+                        .Border(Spectre.Console.BoxBorder.Rounded)
+                        .Padding(1,1)
+                        .BorderColor(Spectre.Console.Color.Red)
+                );
+>>>>>>> Stashed changes
                 break;
             }
         }
@@ -81,9 +125,13 @@ class Veintiuna
         // A = 0, 2-10 = 1-9, J/Q/K = 10-12
         if (indice == 0)
         {
-            Console.Write("Has sacado un As. ¿Qué valor quieres darle? (1/11): ");
-            string? input = Console.ReadLine();
-            if (input != null && input.Trim() == "11") return 11;
+            var valorAs = Spectre.Console.AnsiConsole.Prompt(
+                new Spectre.Console.SelectionPrompt<string>()
+                    .Title("Has sacado un As. ¿Qué valor quieres darle?")
+                    .PageSize(3)
+                    .AddChoices(new[] { "1", "11" })
+            );
+            if (valorAs == "11") return 11;
             return 1;
         }
         else if (indice >= 10) // J, Q, K
